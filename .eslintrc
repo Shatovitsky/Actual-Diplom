@@ -13,6 +13,8 @@
   "plugins": ["prettier"],
 
   "rules": {
+    "consistent-return": "off",
+    "import/no-unresolved": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/no-array-index-key": "off",
     "no-undef": "off",

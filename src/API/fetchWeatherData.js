@@ -1,8 +1,8 @@
-import { REACT_APP_OPENWEATHER_URL } from '../constants';
+import { config } from '../constants';
 
 async function fetchWeatherData(cityName) {
   const response = await fetch(
-    `${REACT_APP_OPENWEATHER_URL}q=${cityName}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=metric`,
+    `${config.apiOpenweatherUrl}weather?q=${cityName}&appid=${config.apiKeyOpenweather}&units=metric`,
   );
   const data = await response.json();
   if (data.cod === '404') {

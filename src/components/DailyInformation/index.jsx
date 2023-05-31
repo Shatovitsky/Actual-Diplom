@@ -1,15 +1,15 @@
+import { config, weekdays } from '@constants';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 import './index.scss';
 
 function DailyInformation() {
-  const weatherIconBaseUrl = 'https://www.weatherbit.io/static/img/icons/';
   const days = useSelector((state) => state.weeklyWeather.weeklyWeatherData);
   const week = days.map((day) => day.datetime);
 
   function getWeatherIconUrl(iconCode) {
-    return `${weatherIconBaseUrl}${iconCode}.png`;
+    return `${config.apiWeatherbitImg}${iconCode}.png`;
   }
 
   const imgDays = days
@@ -18,7 +18,6 @@ function DailyInformation() {
 
   const mappedDates = week.slice(1).map((date) => {
     const dateObject = new Date(date);
-    const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const dayOfWeek = dateObject.getDay();
     return weekdays[dayOfWeek];
   });
@@ -32,7 +31,7 @@ function DailyInformation() {
             <img
               className='weather-week__day_icon'
               src={imgDays[index]}
-              alt=''
+              alt='weather-icon'
             />
             <h3 className='weather-week__day_degree'>
               {Math.round(days[index].temp)}°

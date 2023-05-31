@@ -1,21 +1,24 @@
-export const AUTO_COMPLETE_URL = `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_ACCUWEATHER_KEY}&q=`;
-
+export const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+export const DELAY_FOR_FIND_CITIES = 500;
+export const UPDATE_THE_TIME = 6000;
+export const today = new Date();
 export const GET_CURRENT_LOCATION_REQUESTED = 'GET_CURRENT_LOCATION_REQUESTED';
 export const ASYNC_FETCH_WEATHER_DATA_GEOLOCATION_BAN =
   'ASYNC_FETCH_WEATHER_DATA_GEOLOCATION_BAN';
-
 export const GET_CURRENT_LOCATION_FAILED = 'GET_CURRENT_LOCATION_FAILED';
-export const today = new Date();
-// API
-export const REACT_APP_OPENWEATHER_URL =
-  'https://api.openweathermap.org/data/2.5/weather?';
+// GoogleEvents and User
 
-// WEATHER
+export const CLEAR_USER = 'CLEAR_USER';
+export const CLEAR_ALL_EVENTS = 'CLEAR_ALL_EVENTS';
+export const CLEAR_SCHEDULED_EVENTS = 'CLEAR_SCHEDULED_EVENTS';
+export const SET_USER = 'SET_USER';
+export const SET_SCHEDULED_EVENTS = 'SET_SCHEDULED_EVENTS';
+export const SET_ALL_EVENTS = 'SET_ALL_EVENTS';
+export const ADD_EVENT = 'ADD_EVENT';
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const UPDATE_EVENT = 'UPDATE_EVENT';
 
-export const URL_WEATHER = 'https://api.openweathermap.org/data/2.5/';
-export const URL_WEATHERBIT = 'https://api.weatherbit.io/v2.0/forecast/';
-export const API_KEY = 'ca92d5d554730b0689860ca54b0d5b7f';
-
+// GoogleEvents and User
 export const ASYNC_FETCH_WEATHER_SEARCH_DATA_SYS =
   'ASYNC_FETCH_WEATHER_SEARCH_DATA_SYS';
 export const ASYNC_FETCH_WEATHER_SEARCH_DATA_CITY =
@@ -34,7 +37,18 @@ export const GET_CURRENT_WEATHER_DATA_SUCCEEDED =
   'GET_CURRENT_WEATHER_DATA_SUCCEEDED';
 export const ASYNC_FETCH_WEATHER_DATA = 'ASYNC_FETCH_WEATHER_DATA';
 
-// weather hourly and daily
 export const FETCH_WEEKLY_WEATHER = 'FETCH_WEEKLY_WEATHER';
 export const FETCH_WEEKLY_WEATHER_SUCCESS = 'FETCH_WEEKLY_WEATHER_SUCCESS';
 export const FETCH_HOURLY_WEATHER_SUCCESS = 'FETCH_HOURLY_WEATHER_SUCCESS';
+
+export const config = {
+  apiKeyOpenweather: process.env.REACT_APP_OPENWEATHER_KEY,
+  apiSecondKeyOpenweather: process.env.REACT_APP_OPENWEATHER_SECOND_KEY,
+  apiKeyAccuweather: process.env.REACT_APP_ACCUWEATHER_KEY,
+  apiKeyWeatherbit: process.env.REACT_APP_WEATHERBIT_KEY,
+  apiOpenweatherUrl: process.env.REACT_APP_OPENWEATHER_URL,
+  apiWeatherbitUrl: process.env.REACT_APP_WEATHERBIT_URL,
+  apiAccuweatherUrl: process.env.REACT_APP_ACCUWEATHER_URL,
+  apiOpenweatherImg: process.env.REACT_APP_OPENWEATHER_IMG,
+  apiWeatherbitImg: process.env.REACT_APP_WEATHERBIT_IMG,
+};

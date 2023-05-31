@@ -3,8 +3,10 @@ import './index.scss';
 import { useSelector } from 'react-redux';
 
 function City() {
-  const seacrhCity = useSelector((state) => state.searchData.city);
-  const searchSysCity = useSelector((state) => state.searchData.sys);
+  const { city: seacrhCity, sys: searchSysCity } = useSelector(
+    (state) => state.searchData,
+  );
+
   return (
     <div className='site'>
       <h2 className='site__city'>{seacrhCity}</h2>

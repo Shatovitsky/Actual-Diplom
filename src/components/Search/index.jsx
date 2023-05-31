@@ -1,11 +1,3 @@
-import _ from 'lodash';
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-
-import fetchWeatherData from '../../API/fetchWeatherData';
-import fetchGetDaysWeather from '../../API/getDaysDataWeather';
-import fetchGetHourlyWeather from '../../API/getHourlyDataWeather';
-
 import {
   searchData,
   searchDataSys,
@@ -14,10 +6,17 @@ import {
   searchDataDaily,
   searchDataHourly,
   searchNameWeather,
-} from '../../redux/actions/weather';
+} from '@actions';
+import fetchWeatherData from '@API/fetchWeatherData';
+import fetchGetDaysWeather from '@API/getDaysDataWeather';
+import fetchGetHourlyWeather from '@API/getHourlyDataWeather';
+import ButtonSearch from '@components/UI/ButtonSearch';
+import Input from '@components/UI/Input';
+import { DELAY_FOR_FIND_CITIES, config } from '@constants';
+import _ from 'lodash';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
-import ButtonSearch from '../UI/ButtonSearch';
-import Input from '../UI/Input';
 import './index.scss';
 
 function Search() {
@@ -60,10 +59,9 @@ function Search() {
       return;
     }
 
-    const apiKey = 'GuK1KGZ67taKYgPkxgmBK3cFAm1M3RdM';
-    const url = `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${encodeURIComponent(
-      searchTerm,
-    )}`;
+    const url = `${config.apiAccuweatherUrl}apikey=${
+      config.apiKeyAccuweather
+    }&q=${encodeURIComponent(searchTerm)}`;
 
     try {
       const response = await fetch(url);
@@ -75,7 +73,7 @@ function Search() {
     } catch (error) {
       console.error(error);
     }
-  }, 500);
+  }, DELAY_FOR_FIND_CITIES);
 
   const handleResultClick = useCallback(
     async (result) => {
@@ -93,7 +91,7 @@ function Search() {
       dispatch(searchDataDaily(days.data));
       dispatch(searchDataHourly(hourly.list));
     },
-    [dispatch],
+    [fetchWeatherData, fetchGetDaysWeather, fetchGetHourlyWeather],
   );
 
   const handleKeyPress = (event) => {

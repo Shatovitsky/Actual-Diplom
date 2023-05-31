@@ -1,8 +1,8 @@
-import { URL_WEATHERBIT } from '../constants';
+import { config } from '../constants';
 
 async function fetchGetDaysWeather(weatherData) {
   const response = await fetch(
-    `${URL_WEATHERBIT}daily?city=${weatherData}&NC&key=${process.env.REACT_APP_WEATHERBIT_KEY}&days=6`,
+    `${config.apiWeatherbitUrl}daily?city=${weatherData}&NC&key=${config.apiKeyWeatherbit}&days=7`,
   );
   const data = await response.json();
   return data;

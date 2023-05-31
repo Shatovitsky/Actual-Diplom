@@ -1,3 +1,4 @@
+import { UPDATE_THE_TIME } from '@constants';
 import React, { useState, useEffect } from 'react';
 
 function Clock() {
@@ -6,7 +7,7 @@ function Clock() {
   useEffect(() => {
     const timerID = setInterval(() => {
       setTime(new Date());
-    }, 6000);
+    }, UPDATE_THE_TIME);
     return () => clearInterval(timerID);
   }, []);
 

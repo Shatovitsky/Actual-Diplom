@@ -1,7 +1,7 @@
 import {
   FETCH_HOURLY_WEATHER_SUCCESS,
   ASYNC_FETCH_WEATHER_SEARCH_HOURLY,
-} from '../../constants';
+} from '@constants';
 
 const initialState = {
   hourlyWeatherData: [],

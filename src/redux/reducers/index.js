@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import googleEventsReducer from './googleEventsReducer';
 import hourlyWeatherReducer from './hourlyWeatherReducer';
 import searchWeatherDataReducer from './searchWeatherDataReducer';
 import weatherDataReducer from './weatherDataReducer';
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   weeklyWeather: weeklyWeatherReducer,
   hourlyWeather: hourlyWeatherReducer,
   searchData: searchWeatherDataReducer,
+  googleCalendar: googleEventsReducer,
 });
 
 export default rootReducer;

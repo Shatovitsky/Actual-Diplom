@@ -1,15 +1,17 @@
+import DailyInformation from '@components/DailyInformation';
+import HourlyInformation from '@components/HourlyInformation';
+import ButtonDaily from '@components/UI/ButtonDaily';
+import ButtonHourly from '@components/UI/ButtonHourly';
+import { config } from '@constants';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import DailyInformation from '../DailyInformation';
-import HourlyInformation from '../HourlyInformation';
-import ButtonDaily from '../UI/ButtonDaily';
-import ButtonHourly from '../UI/ButtonHourly';
 import './index.scss';
 
 function MainInformationWeather() {
-  const tempToday = useSelector((state) => state.searchData.temp);
-  const mainImage = useSelector((state) => state.searchData.image);
+  const { temp: tempToday, image: mainImage } = useSelector(
+    (state) => state.searchData,
+  );
   const data = useSelector((state) => state.weather.today);
 
   const [weatherComponent, setWeatherComponent] = useState('hourly');
@@ -22,7 +24,7 @@ function MainInformationWeather() {
               <img
                 className='weather-week__day_main-icon'
                 alt=''
-                src={`https://openweathermap.org/img/wn/${mainImage}@2x.png`}
+                src={`${config.apiOpenweatherImg}${mainImage}@2x.png`}
               />
             )}
             <div className='weather-week__day_container'>

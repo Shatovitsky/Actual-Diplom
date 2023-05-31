@@ -2,7 +2,7 @@ import {
   GET_CURRENT_WEATHER_DATA_SUCCEEDED,
   FETCH_WEEKLY_WEATHER,
   ASYNC_FETCH_WEATHER_DATA_GEOLOCATION_BAN,
-} from '../../constants';
+} from '@constants';
 
 const initialState = {
   today: {},

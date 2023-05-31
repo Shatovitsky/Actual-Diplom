@@ -179,3 +179,72 @@
     }
   }
 }
+
+@media all and (max-width: 970px) {
+  .inforamtion-weather-now {
+    background-size: 200%;
+    height: 70%;
+    .weather-week {
+      align-items: center;
+      .weather-week-container {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 250px;
+        height: 110%;
+      }
+      &__today {
+        margin-bottom: 15px;
+        height: 100%;
+        width: 180px;
+        flex-direction: row;
+      }
+      &__day {
+        height: 130px;
+        &_main-name {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 13px;
+          padding-right: 13px;
+          font-size: 18px;
+        }
+        &_main-degree {
+          font-size: 34px;
+        }
+        &_main-icon {
+          width: 58px;
+          height: 58px;
+          align-self: center;
+        }
+        &_name {
+          padding-top: 4px;
+          padding-bottom: 4px;
+          padding-left: 12px;
+          padding-right: 12px;
+          font-size: 16px;
+        }
+        &_degree {
+          font-size: 24px;
+        }
+        &_icon {
+          width: 36px;
+          height: 36px;
+        }
+        &_container {
+          align-self: center;
+        }
+      }
+      &__buttons {
+        width: 175px;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 760px) {
+  .inforamtion-weather-now {
+    height: 40%;
+  }
+}

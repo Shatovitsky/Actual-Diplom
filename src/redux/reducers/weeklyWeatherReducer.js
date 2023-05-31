@@ -1,7 +1,7 @@
 import {
   FETCH_WEEKLY_WEATHER_SUCCESS,
   ASYNC_FETCH_WEATHER_SEARCH_DAILY,
-} from '../../constants';
+} from '@constants';
 
 const initialState = {
   weeklyWeatherData: [],

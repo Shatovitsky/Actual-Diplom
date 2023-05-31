@@ -1,10 +1,9 @@
+import { today } from '@constants';
 import dateFormat from 'dateformat';
 import React from 'react';
 
 import './index.scss';
 import Clock from './Clock';
-
-import { today } from '../../constants';
 
 function Date() {
   return (

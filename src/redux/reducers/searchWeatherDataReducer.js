@@ -4,7 +4,7 @@ import {
   ASYNC_FETCH_WEATHER_SEARCH_DATA_SYS,
   ASYNC_FETCH_WEATHER_SEARCH_DATA_TEMP,
   ASYNC_FETCH_WEATHER_SEARCH_NAME_WEATHER,
-} from '../../constants';
+} from '@constants';
 
 const initialState = {
   city: '',

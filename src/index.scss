@@ -103,6 +103,11 @@ fieldset {
     width: 600px;
   }
 }
+@media screen and (max-width: 970px) {
+  .container {
+    width: 480px;
+  }
+}
 
 @media screen and (max-width: 870px) {
   .container {

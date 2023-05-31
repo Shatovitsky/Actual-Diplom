@@ -9,6 +9,6 @@ import {
 export default function* rootSaga() {
   yield all(
     [call(weatherWatcher)],
-    [call(watchWeeklyWeather), call(watchHourlyWeather)],
+    [(call(watchWeeklyWeather), call(watchHourlyWeather))],
   );
 }

@@ -1,4 +1,4 @@
-import { URL_WEATHER, API_KEY, URL_WEATHERBIT } from '../constants';
+import { config } from '../constants';
 
 export const currentData = navigator.geolocation.getCurrentPosition(
   (position) => {
@@ -9,7 +9,7 @@ export const currentData = navigator.geolocation.getCurrentPosition(
 
 export const getDataWeather = async (city) => {
   const request = await fetch(
-    `${URL_WEATHER}weather?q={city}&appid=${API_KEY}`,
+    `${config.apiOpenweatherUrl}weather?q={city}&appid=${config.apiSecondKeyOpenweather}`,
   );
   return request.join;
 };
@@ -17,7 +17,7 @@ export const getDataWeather = async (city) => {
 export const getHourlyWeather = async (weatherData) => {
   try {
     const response = await fetch(
-      `${URL_WEATHER}forecast?q=${weatherData.name}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&cnt=5&units=metric`,
+      `${config.apiOpenweatherUrl}forecast?q=${weatherData.name}&appid=${config.apiKeyOpenweather}&cnt=6&units=metric`,
     );
 
     if (!response.ok) {
@@ -34,7 +34,7 @@ export const getHourlyWeather = async (weatherData) => {
 export const getDailyWeather = async (weatherData) => {
   try {
     const response = await fetch(
-      `${URL_WEATHERBIT}daily?city=${weatherData.name}&NC&key=${process.env.REACT_APP_WEATHERBIT_KEY}&days=6`,
+      `${config.apiWeatherbitUrl}daily?city=${weatherData.name}&NC&key=${config.apiKeyWeatherbit}&days=7`,
     );
 
     if (!response.ok) {
@@ -51,7 +51,7 @@ export const getDailyWeather = async (weatherData) => {
 export const getStaticCityWeather = async () => {
   try {
     const response = await fetch(
-      `${URL_WEATHER}weather?q=Minsk&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=metric`,
+      `${config.apiOpenweatherUrl}weather?q=Minsk&appid=${config.apiKeyOpenweather}&units=metric`,
     );
 
     if (!response.ok) {
@@ -68,7 +68,7 @@ export const getStaticCityWeather = async () => {
 export const getStaticHourlyWeather = async () => {
   try {
     const response = await fetch(
-      `${URL_WEATHER}forecast?q=Minsk&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&cnt=5&units=metric`,
+      `${config.apiOpenweatherUrl}forecast?q=Minsk&appid=${config.apiKeyOpenweather}&cnt=6&units=metric`,
     );
 
     if (!response.ok) {
@@ -85,7 +85,7 @@ export const getStaticHourlyWeather = async () => {
 export const getStaticDailyWeather = async () => {
   try {
     const response = await fetch(
-      `${URL_WEATHERBIT}daily?city=Minsk&NC&key=${process.env.REACT_APP_WEATHERBIT_KEY}&days=6`,
+      `${config.apiWeatherbitUrl}daily?city=Minsk&NC&key=${config.apiKeyWeatherbit}&days=7`,
     );
 
     if (!response.ok) {

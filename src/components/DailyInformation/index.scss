@@ -209,11 +209,11 @@
     height: 70%;
     .weather-week {
       align-items: center;
-      flex-direction: column;
       .weather-week-container {
         justify-content: space-between;
         flex-wrap: wrap;
-        width: 220px;
+        width: 250px;
+        height: 110%;
       }
       &__today {
         margin-bottom: 15px;
@@ -259,7 +259,7 @@
       &__buttons {
         width: 175px;
         justify-content: space-between;
-        flex-direction: row;
+        flex-direction: column !important;
       }
     }
   }
