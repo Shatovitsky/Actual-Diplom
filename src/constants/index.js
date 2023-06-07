@@ -14,9 +14,6 @@ export const CLEAR_SCHEDULED_EVENTS = 'CLEAR_SCHEDULED_EVENTS';
 export const SET_USER = 'SET_USER';
 export const SET_SCHEDULED_EVENTS = 'SET_SCHEDULED_EVENTS';
 export const SET_ALL_EVENTS = 'SET_ALL_EVENTS';
-export const ADD_EVENT = 'ADD_EVENT';
-export const DELETE_EVENT = 'DELETE_EVENT';
-export const UPDATE_EVENT = 'UPDATE_EVENT';
 
 // GoogleEvents and User
 export const ASYNC_FETCH_WEATHER_SEARCH_DATA_SYS =
@@ -51,4 +48,5 @@ export const config = {
   apiAccuweatherUrl: process.env.REACT_APP_ACCUWEATHER_URL,
   apiOpenweatherImg: process.env.REACT_APP_OPENWEATHER_IMG,
   apiWeatherbitImg: process.env.REACT_APP_WEATHERBIT_IMG,
+  cliendId: process.env.REACT_APP_CLIENT_ID,
 };

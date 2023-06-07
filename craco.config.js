@@ -11,6 +11,7 @@ module.exports = {
       '@constants': resolvePath('./src/constants'),
       '@statics/icons': resolvePath('./src/statics/assets/icons'),
       '@API': resolvePath('./src/API'),
+      '@formatTime': resolvePath('./src/utils/formatTime'),
     },
   },
 };

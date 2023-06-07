@@ -1,3 +1,5 @@
+import ModalEvents from '@components/Events/ModalEvents';
+import { config } from '@constants';
 import eventIcon from '@statics/icons/event.svg';
 import signIcon from '@statics/icons/sign.svg';
 import { gapi } from 'gapi-script';
@@ -13,9 +15,7 @@ import {
   setAllEvents,
   setScheduledEvents,
 } from '../../redux/actions/googleCalendar';
-import App from '../App';
-import ModalEvents from '../Events/ModalEvents';
-import AlertGetEvents from '../helpers/AlertGetEvents';
+
 import './index.scss';
 
 function MoreFacilities() {
@@ -24,10 +24,6 @@ function MoreFacilities() {
   const dispatch = useDispatch();
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
 
   const listAllEvents = () => {
     if (ApiCalendar.sign) {
@@ -39,6 +35,10 @@ function MoreFacilities() {
     }
   };
 
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
   const listUpcomingEvents = () => {
     if (ApiCalendar.sign) {
       ApiCalendar.listUpcomingEvents(10).then(({ result }) => {
@@ -46,41 +46,34 @@ function MoreFacilities() {
       });
     }
   };
-  const cliendId =
-    '922043152403-mdibionvoljcih5a2eeh7aaidjbo87le.apps.googleusercontent.com';
   useEffect(() => {
-    // При загрузке компонента устанавливаем обработчик на изменение состояния авторизации
     ApiCalendar.onLoad(() => {
       ApiCalendar.listenSign(signUpdate);
     });
     gapi.load('client: auth2', () => {
-      gapi.auth2.init({ cliendId });
+      gapi.auth2.init(config.clientId);
     });
 
-    // Очищаем обработчик при размонтировании компонента
     return () => {
       ApiCalendar.stopListeningSign(signUpdate);
     };
   }, []);
-  const signUpdate = (sign) => {
-    console.log(sign);
-  };
+  const signUpdate = (sign) => {};
+
   const handleShowEventsClick = () => {
     if (isSignedIn) {
       handleOpenModal();
-    } else {
-      setShowAlert(true);
-      alert('Для просмотра событий необходимо авторизоваться!');
+    } else if (!isSignedIn) {
+      alert('Внимание! Для просмотра событий необходимо авторизоваться!');
     }
   };
+
   const handleItemClick = async (event, name) => {
     if (name === 'sign-in') {
       try {
         await ApiCalendar.handleAuthClick();
-        console.log('logged in');
-        setIsSignedIn(true);
 
-        // Получение данных о пользователе
+        setIsSignedIn(true);
         const userInfo = await ApiCalendar.getBasicUserProfile();
 
         dispatch(setUser(userInfo));
@@ -94,8 +87,6 @@ function MoreFacilities() {
         }
       }
     } else if (name === 'sign-out') {
-      console.log('logged out');
-      // Очистка данных о пользователе в Redux
       dispatch(clearUser());
       dispatch(clearAllEvents());
       dispatch(clearScheduledEvents());
@@ -136,7 +127,6 @@ function MoreFacilities() {
         </li>
       </ul>
       {showModal && <ModalEvents onClose={() => setShowModal(false)} />}
-      {/* {showAlert && !isSignedIn && <AlertGetEvents />} */}
     </div>
   );
 }

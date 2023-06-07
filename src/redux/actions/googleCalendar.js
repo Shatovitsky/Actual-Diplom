@@ -5,7 +5,7 @@ import {
   SET_SCHEDULED_EVENTS,
   CLEAR_ALL_EVENTS,
   CLEAR_SCHEDULED_EVENTS,
-} from '../../constants';
+} from '@constants';
 
 export const setUser = (userData) => ({
   type: SET_USER,
@@ -32,6 +32,7 @@ export const clearAllEvents = () => {
     type: CLEAR_ALL_EVENTS,
   };
 };
+
 export const clearScheduledEvents = () => {
   return {
     type: CLEAR_SCHEDULED_EVENTS,
